@@ -2,29 +2,24 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Autos - <%= nombre %></title>
+    <title>Catalogo de Autos - <%= nombre %></title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <header>
-        <h1><%= nombre %></h1>
-    </header>
+    <%- include('partials/header', { nombre: nombre }) %>
 
     <main>
-        <p>¡Bienvenido a mi sitio de autos!</p>
-
-        <% categoriasAutos.forEach(function(cat) { %>
-            <section>
-                <h2><%= cat.nombre %></h2>
-                <nav>
-                    <ul>
-                        <% cat.autos.forEach(function(auto) { %>
-                            <li><%= auto %></li>
-                        <% }); %>
-                    </ul>
-                </nav>
-            </section>
-        <% }); %>
+        <section class="listado">
+            <% autos.forEach(function(auto) { %>
+                <article class="tarjeta-auto">
+                    <h2><%= auto.marca %> <%= auto.modelo %></h2>
+                    <p>Categoría: <%= auto.categoria %></p>
+                    <a href="/auto/<%= auto.id %>">Ver detalle</a>
+                </article>
+            <% }); %>
+        </section>
     </main>
+
+    <%- include('partials/footer') %>
 </body>
 </html>

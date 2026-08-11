@@ -1,68 +1,149 @@
-/* Configuramos el fondo y centramos todo el contenido */
-body {
-    background-color: #0d0d0d; /* Un negro más profundo y elegante */
-    color: #e0e0e0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra los elementos horizontalmente */
 }
 
-/* El encabezado ahora será una tarjeta moderna */
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #222;
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
 header {
-    background-color: #151515;
-    margin-top: 50px;
-    padding: 30px 40px;
-    border-radius: 12px; /* Bordes redondeados suaves */
-    border: 1px solid #2a2a2a;
-    box-shadow: 0 8px 25px rgba(177, 66, 250, 0.15); /* Sutil resplandor morado */
-    text-align: center;
-    width: 100%;
-    max-width: 300px;
+    background: #111;
+    color: white;
+    padding: 1.2rem 2rem;
+    border-bottom: 4px solid #c00;
+    flex-shrink: 0;
 }
 
 header h1 {
-    margin: 0 0 25px 0; /* Espacio debajo del título */
-    color: #b142fa; 
-    font-size: 26px;
-    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
 }
 
-/* Aquí hacemos que la lista sea vertical */
-nav ul {
+header nav ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
-    flex-direction: column; /* Apila los elementos hacia abajo */
-    gap: 15px; /* Espacio exacto entre cada botón */
+    gap: 1.5rem;
 }
 
-/* Convertimos los textos en botones */
-nav a {
-    display: block; /* Ocupa todo el ancho disponible */
-    background-color: #1e1e1e; /* Gris muy oscuro */
-    color: #ffffff;
+header nav a {
+    color: #eee;
     text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 8px; /* Botones redondeados */
-    font-weight: 600;
-    transition: all 0.3s ease; /* Transición suave para el hover */
+    font-weight: bold;
+    transition: color 0.2s;
 }
 
-/* Efecto al pasar el cursor (Hover) */
-nav a:hover {
-    background-color: #b142fa; /* El fondo se vuelve morado */
-    color: #ffffff;
-    transform: translateY(-3px); /* El botón "sube" un poco */
-    box-shadow: 0 5px 15px rgba(177, 66, 250, 0.4); /* Resplandor más fuerte */
+header nav a:hover {
+    color: #e63946;
 }
 
-/* Estilo para el texto de abajo */
+/* Main */
 main {
-    margin-top: 30px;
-    font-size: 16px;
-    color: #888888;
+    flex: 1 0 auto;
+    padding: 2rem;
+}
+
+/* Grid de tarjetas */
+.listado {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.tarjeta-auto {
+    background: white;
+    border: 1px solid #ddd;
+    border-left: 5px solid #c00;
+    border-radius: 6px;
+    padding: 1.2rem;
+    flex: 1 1 280px;
+    max-width: 320px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tarjeta-auto:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.tarjeta-auto h2 {
+    color: #111;
+    margin-bottom: 0.5rem;
+}
+
+.tarjeta-auto a {
+    display: inline-block;
+    margin-top: 0.8rem;
+    background: #c00;
+    color: white;
+    text-decoration: none;
+    padding: 0.4rem 0.9rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.tarjeta-auto a:hover {
+    background: #900;
+}
+
+/* Detalle */
+.detalle-auto {
+    background: white;
+    border-radius: 6px;
+    padding: 1.5rem;
+    max-width: 500px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.proveedor {
+    background: #f4f4f4;
+    border-radius: 4px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.detalle-auto a {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #c00;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.detalle-auto a:hover {
+    text-decoration: underline;
+}
+
+/* Estados */
+.estado {
+    font-weight: bold;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.estado.disponible { background: #d4edda; color: #155724; }
+.estado.pocas { background: #fff3cd; color: #856404; }
+.estado.agotado { background: #f8d7da; color: #721c24; }
+
+/* Footer */
+footer {
+    background: #111;
+    color: #aaa;
+    text-align: center;
+    padding: 1rem;
+    flex-shrink: 0;
+    border-top: 4px solid #c00;
 }
