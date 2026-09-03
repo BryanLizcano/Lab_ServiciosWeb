@@ -2,13 +2,14 @@ const mongoose = require('mongoose');
 
 const charlaSchema = new mongoose.Schema({
     titulo: String,
-
-    ponente: {
+    descripcion: String,
+    fecha: String,
+    hora: String,
+    expositor: {
         nombre: String,
+        especialidad: String,
         correo: String
     }
 });
 
-const Charla = mongoose.model('Charla', charlaSchema);
-
-module.exports = Charla;
+module.exports = mongoose.model('Charla', charlaSchema);

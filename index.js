@@ -2,14 +2,14 @@ require('dotenv').config();
 
 const express = require('express');
 
-// const connectDB = require('./config/database');
-
 const autosRoutes = require('./routes/autos');
-// const charlasRoutes = require('./routes/charlas');
+const charlasRoutes = require('./routes/charlas');
+
+const connectMongo = require('./config/mongo');
 
 const app = express();
 
-// connectDB();
+connectMongo();
 
 app.set('view engine', 'ejs');
 
@@ -17,8 +17,16 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Rutas
-app.use('/', autosRoutes);
-// app.use('/charlas', charlasRoutes);
+// Ruta Menú Principal
+app.get('/', (req, res) => {
+    res.render('home', { nombre: 'Bryan Lizcano' });
+});
 
-app.listen(3000, () => console.log('Servidor en http://localhost:3000'));
+// Rutas postgres
+app.use('/autos', autosRoutes);
+
+// Rutas mongo
+app.use('/charlas', charlasRoutes);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Servidor en http://localhost:${PORT}`));

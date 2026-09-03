@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 
         const autosRes = await pool.query(queryAutos, params);
 
-        res.render('index', {
+        res.render('autos/autos', {
             nombre: 'Bryan Lizcano',
             autos: autosRes.rows,
             categorias: categoriasRes.rows,
@@ -72,7 +72,7 @@ router.get('/auto/:id', async (req, res) => {
             }
         };
 
-        res.render('detalle', {
+        res.render('autos/detalle', {
             nombre: 'Bryan Lizcano',
             auto: auto
         });

@@ -2,18 +2,18 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Catalogo de Autos - <%= nombre %></title>
+    <title>Catálogo de Autos - <%= nombre %></title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <%- include('partials/header', { nombre: nombre }) %>
+    <%- include('../partials/header', { nombre: nombre }) %>
 
     <main>
         <!-- Barra de filtros por categoría -->
         <section class="filtros" style="margin: 1.5rem 0; display: flex; gap: 10px; flex-wrap: wrap;">
-            <a href="/" class="<%= !categoriaActual ? 'activo' : '' %>">Todas</a>
+            <a href="/autos" class="<%= !categoriaActual ? 'activo' : '' %>">Todas</a>
             <% categorias.forEach(function(cat) { %>
-                <a href="/?categoria=<%= cat.nombre %>" 
+                <a href="/autos?categoria=<%= cat.nombre %>" 
                    class="<%= categoriaActual === cat.nombre ? 'activo' : '' %>">
                     <%= cat.nombre %>
                 </a>
@@ -29,13 +29,13 @@
                     <article class="tarjeta-auto">
                         <h2><%= auto.marca %> <%= auto.modelo %></h2>
                         <p>Categoría: <%= auto.categoria %></p>
-                        <a href="/auto/<%= auto.id %>">Ver detalle</a>
+                        <a href="/autos/auto/<%= auto.id %>">Ver detalle</a>
                     </article>
                 <% }); %>
             <% } %>
         </section>
     </main>
 
-    <%- include('partials/footer') %>
+    <%- include('../partials/footer') %>
 </body>
 </html>
