@@ -1,31 +1,24 @@
 require('dotenv').config();
-
 const express = require('express');
 
-const autosRoutes = require('./routes/autos');
+const connectDB = require('./config/db');
 const charlasRoutes = require('./routes/charlas');
-
-const connectMongo = require('./config/mongo');
 
 const app = express();
 
-connectMongo();
+// Conectar a Base de Datos
+connectDB();
 
-app.set('view engine', 'ejs');
-
-app.use(express.static('public'));
+// Middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Ruta Menú Principal
+// Ruta principal
 app.get('/', (req, res) => {
-    res.render('home', { nombre: 'Bryan Lizcano' });
+    res.json({ mensaje: 'Bienvenido a la API de Charlas' });
 });
 
-// Rutas postgres
-app.use('/autos', autosRoutes);
-
-// Rutas mongo
+// Rutas
 app.use('/charlas', charlasRoutes);
 
 const PORT = process.env.PORT || 3000;
